@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孟嘉琛 - 个人主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d6a4f;
+            --accent-color: #e63946;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --light-gray: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            color: var(--dark-color);
+            background-color: #f5f7fa;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* 主区域 */
+        .hero {
+            padding: 180px 0 120px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="%231a365d" stroke-width="0.5" opacity="0.1"/></svg>');
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+        }
+
+        .hero-image {
+            flex: 0 0 300px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.5s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.03);
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .description {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: var(--gray-color);
+            max-width: 600px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+
+        .contact-item i {
+            margin-right: 10px;
+            color: var(--accent-color);
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.2);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+        }
+
+        /* 内容区域 */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 教育背景 */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .education-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .education-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2c5282 100%);
+            color: white;
+            padding: 30px;
+            position: relative;
+        }
+
+        .education-badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 5px;
+        }
+
+        .badge-985 {
+            background-color: #ff6b35;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .badge-211 {
+            background-color: #4ecdc4;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .education-school {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .education-major {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .education-period {
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 6px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .education-content {
+            padding: 30px;
+        }
+
+        .education-detail {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .education-detail i {
+            color: var(--accent-color);
+            margin-right: 12px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .gpa-badge {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* 实习经历 - 横版时间线 */
+        .horizontal-timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 80px auto 40px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            right: 50px;
+            height: 4px;
+            background-color: var(--light-gray);
+            z-index: 1;
+        }
+
+        .timeline-items {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-item {
+            position: relative;
+            text-align: center;
+            flex: 1;
+            max-width: 250px;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 3;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px var(--accent-color);
+        }
+
+        .timeline-date {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            background-color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-company {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .timeline-role {
+            font-size: 14px;
+            color: var(--gray-color);
+            margin-bottom: 20px;
+        }
+
+        /* 实习内容详情 */
+        .experience-details {
+            margin-top: 80px;
+        }
+
+        .experience-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .experience-header {
+            background-color: white;
+            padding: 25px 30px 15px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .experience-company {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .company-logo {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+
+        .experience-role {
+            font-size: 18px;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .experience-period {
+            font-size: 14px;
+            color: var(--gray-color);
+            background-color: var(--light-gray);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .experience-content {
+            padding: 25px 30px;
+        }
+
+        .experience-detail {
+            margin-bottom: 15px;
+            display: flex;
+        }
+
+        .experience-detail i {
+            color: var(--accent-color);
+            margin-right: 12px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* 在校经历（保持第一次版本） */
+        .campus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .campus-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .campus-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .campus-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 25px;
+        }
+
+        .campus-organization {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .campus-role {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .campus-period {
+            font-size: 14px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .campus-content {
+            padding: 25px;
+        }
+
+        .campus-detail {
+            margin-bottom: 15px;
+            display: flex;
+        }
+
+        .campus-detail i {
+            color: var(--accent-color);
+            margin-right: 12px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* 技能 */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .skill-item {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s;
+            width: 150px;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links i {
+            margin-right: 8px;
+            width: 20px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 40px;
+            }
+            
+            .subtitle {
+                font-size: 22px;
+            }
+            
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .timeline-items {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 40px;
+            }
+            
+            .timeline-item {
+                flex: 0 0 calc(50% - 20px);
+            }
+            
+            .timeline-line {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .campus-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .timeline-item {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo"><i class="fas fa-user-tie"></i> 孟嘉琛</a>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#education">教育背景</a></li>
+                    <li><a href="#experience">实习经历</a></li>
+                    <li><a href="#campus">在校经历</a></li>
+                    <li><a href="#skills">个人技能</a></li>
+                    <li><a href="#contact">联系我</a></li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主区域 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>孟嘉琛</h1>
+                    <div class="subtitle">思想政治教育专业硕士 | 生态运营、人力资源与校园招聘</div>
+                    <p class="description">南京大学马克思主义学院硕士研究生，拥有南开大学思想政治教育与广播电视学双学位。具备小红书、腾讯、哔哩哔哩、字节跳动等顶尖科技公司人力资源实习经验，专注于生态运营、校园招聘、雇主品牌与人才发展。</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>15794440922</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>njumjc2002@163.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>江苏省南京市</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-user-check"></i>
+                            <span>中共党员</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn">联系我</a>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="孟嘉琛.jpeg" alt="孟嘉琛" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育背景 -->
+    <section id="education" class="education-section">
+        <div class="container">
+            <h2 class="section-title">教育背景</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-header">
+                        <div class="education-badge">
+                            <div class="badge-985">国家"985工程"建设高校</div>
+                            <div class="badge-211">国家"211工程"建设高校</div>
+                        </div>
+                        <div class="education-school">南京大学</div>
+                        <div class="education-major">马克思主义学院思想政治教育 | 学术型硕士</div>
+                        <div class="education-period">2024年9月 - 2027年6月</div>
+                    </div>
+                    <div class="education-content">
+                        <div class="education-detail">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>推荐免试攻读（保送）硕士研究生</span>
+                        </div>
+                        <div class="education-detail">
+                            <i class="fas fa-chart-line"></i>
+                            <span>学分绩：91.75/100</span>
+                        </div>
+                        <div class="education-detail">
+                            <i class="fas fa-university"></i>
+                            <span>国家"双一流"建设高校</span>
+                        </div>
+                        <div class="education-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>江苏省南京市</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="education-card">
+                    <div class="education-header">
+                        <div class="education-badge">
+                            <div class="badge-985">国家"985工程"建设高校</div>
+                            <div class="badge-211">国家"211工程"建设高校</div>
+                        </div>
+                        <div class="education-school">南开大学</div>
+                        <div class="education-major">马克思主义学院思想政治教育 | 全日制本科</div>
+                        <div class="education-period">2020年9月 - 2024年6月</div>
+                    </div>
+                    <div class="education-content">
+                        <div class="education-detail">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>主修专业：思想政治教育</span>
+                        </div>
+                        <div class="education-detail">
+                            <i class="fas fa-chart-line"></i>
+                            <span>GPA：3.7/4.0 | 成绩排名前20%</span>
+                        </div>
+                        <div class="education-detail">
+                            <i class="fas fa-book"></i>
+                            <span>双学位：新闻与传播学院广播电视学 | GPA：3.9/4.0</span>
+                        </div>
+                        <div class="education-detail">
+                            <i class="fas fa-university"></i>
+                            <span>国家"双一流"建设高校</span>
+                        </div>
+                        <div class="education-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>天津市</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实习经历 -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <h2 class="section-title">实习经历</h2>
+            
+            <!-- 横版时间线 -->
+            <div class="horizontal-timeline-container">
+                <div class="timeline-line"></div>
+                <div class="timeline-items">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2025.12 - 至今</div>
+                        <div class="timeline-company">小红书</div>
+                        <div class="timeline-role">生态应急运营</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2025.03 - 2025.12</div>
+                        <div class="timeline-company">腾讯</div>
+                        <div class="timeline-role">人力资源培训生</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024.11 - 2025.02</div>
+                        <div class="timeline-company">哔哩哔哩</div>
+                        <div class="timeline-role">人力资源实习生</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024.01 - 2024.04</div>
+                        <div class="timeline-company">字节跳动</div>
+                        <div class="timeline-role">HRBP实习生</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 实习详情 -->
+            <div class="experience-details">
+                <!-- 小红书 -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-company">
+                            <img src="小红书.png" alt="小红书" class="company-logo">
+                            小红书科技有限公司
+                        </div>
+                        <div class="experience-role">社区部-Trust&Safety产品四组-生态应急运营（产品经理）</div>
+                        <div class="experience-period">2025年12月 - 至今 | 北京市朝阳区</div>
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>生态应急</strong>：by项目&需求执行日常的应急响应流程，基于上游需求完成风险研判并进行应急处置动作，执行或联动各相关方确保应急动作落地，跟进处置效果</span>
+                        </div>
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>体系&产品功能搭建</strong>：协助建设应急响应的指标体系，并定期对指标结果进行复盘。协助组内安全产品应急协同板块的功能更新迭代和落地，产品适用范围覆盖公司大部分安全团队</span>
+                        </div>
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>项目支持</strong>：支持专项（如防劣迹艺人转世等）的研判标准分级制定、规则撰写、策略输出和回查风险判定全流程，发挥中台角色作用</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 腾讯 -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-company">
+                            <img src="腾讯.png" alt="腾讯" class="company-logo">
+                            腾讯科技（上海）有限公司
+                        </div>
+                        <div class="experience-role">S3-校招与雇主品牌中心-人力资源培训生</div>
+                        <div class="experience-period">2025年3月 - 2025年12月 | 上海市徐汇区</div>
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>负责华东校招渠道日常运维、信息沉淀、全量mapping；C校招活动落地、中台建设和数据分析；青云人才猎聘支持</strong></span>
+                        </div>
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>高校日常运营支持</strong>：独立负责60+校园官方社群运营；承接50+场次青云计划专场活动、参访活动、双选会、求职辅导活动支持。配合团队完成华东地区目标高校10+场次【2025实习生招聘&2026校园招聘】线下宣讲的筹备、内外部沟通、现场支持工作；可独立支持院校招聘会、求职辅导及供应商对接（如上交安泰双选会、上科大求职辅导等）</span>
+                        </div>
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>中台建设&信息沉淀</strong>：主牵高校资源运营中台、2026校园招聘手册两个中台功能的建设，将日常琐碎信息汇总并清晰呈现，同步开放各BG，提高C&BG联动的效率；独立负责校企合作板块内部规则撰写、课题合作模板制定，完善下单规则&各时间节点具体事宜；独立完成华东信息沉淀&更新、高校导师信息全量mapping，完成华东高校人才森林全景图绘制和华东区学生信息总表维护</span>
+                        </div>
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>数据分析&整合</strong>：独立完成2026校园招聘数据核对，by周制作2026校园招聘运营快报共10期，作为C侧的数据看板</span>
+                        </div>
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>高校顶尖人才猎聘</strong>：辅助青云计划团队进行高校重点实验室开源&重点人才猎聘；与华东高校参与ICML、ICLR、CVPR等顶会目标人才建联沟通，独立完成2场访谈；在组内进行领域技术分享（如世界模型），不断加深对AI领域相关知识和发展方向的了解</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 哔哩哔哩 -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-company">
+                            <img src="bilibili.png" alt="哔哩哔哩" class="company-logo">
+                            上海哔哩哔哩科技有限公司
+                        </div>
+                        <div class="experience-role">人力资源部-技术业务支持组-人力资源实习生</div>
+                        <div class="experience-period">2024年11月 - 2025年2月 | 上海市杨浦区</div>
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>支持B站主站流量生态、人工智能平台（AIP）、基础工程、基础架构、数据平台5个团队的算法、开发等岗位的招聘工作</strong></span>
+                        </div>
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>校招支持&数据分析</strong>：负责5个部门校园招聘支持，参与校招候选人约面、80位校招候选人三方情况跟进、30余位校招候选人谈薪前信息收集以及部分校招生的直接谈薪工作；合作完成秋招数据整理与分析，撰写秋招总结报告万余字，完美完成秋招收官工作</span>
+                        </div>
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>招聘渠道维护&拓展</strong>：除BOSS直聘等渠道外，积极拓展新招聘渠道。在职期间撰写岗位宣传文案，制作岗位宣传海报，通过既有人脉在校园BBS和信息共享群内发布招聘信息，定向转化目标高校人群，获取高质量的简历50余份，转化推荐算法方向offer12个</span>
+                        </div>
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>实习生招聘&社招支持</strong>：支持5个部门全部实习生招聘工作，涉及算法（主推荐）、开发、数分等岗位招聘。支持算法&工程&技术项目管理社招岗位招聘工作。其中实习生招聘工作实现“简历推荐-约面-发放offer”全流程闭环，月内入职实习生30+人次</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 字节跳动 -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-company">
+                            <img src="字节.png" alt="字节跳动" class="company-logo">
+                            北京字节跳动科技有限公司
+                        </div>
+                        <div class="experience-role">中国信息平台-HRBP实习生</div>
+                        <div class="experience-period">2024年1月 - 2024年4月 | 北京市海淀区</div>
+                    </div>
+                    <div class="experience-content">
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>支持抖音主站运营团队，团队季度招聘正职职位30+、hc50+ ，覆盖产品、战略、运营等多种岗位，招聘职级集中于字节2-2至3-2</strong></span>
+                        </div>
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>人才检索&流程跟踪</strong>：协助来自3个不同团队的20余位业务进行招聘目标拆分和管理，不断提高人才检索的效率和准确率，在职期间日均推荐高质量简历20份，简历评估业务侧通过率达60%。明晰抖音主站架构，熟悉支持业务情况及主要工作内容；不断打磨sell话术，实现双周内社招约面50+；协助统筹部门人才招聘全流程，跟进全部面试流</span>
+                        </div>
+                        <div class="experience-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>BP工作&数据分析</strong>：以单周为单位梳理招聘卡点文档，结合Longlist和每日进展checklist和业务侧对齐解决方案；根据目前已有的信息和数据，分析比对不同招聘渠道成效，拓宽招聘思路；以双周为单位梳理三个业务部门招聘效率，将面试官面试通过率、面试效能、简历评估效率等数据可视化，汇总文档，为业务部门提供参考，动态优化招聘目标</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 在校经历 -->
+    <section id="campus" class="campus-section">
+        <div class="container">
+            <h2 class="section-title">在校经历与项目实践</h2>
+            <div class="campus-grid">
+                <div class="campus-card">
+                    <div class="campus-header">
+                        <div class="campus-organization">共青团南开大学委员会</div>
+                        <div class="campus-role">学生负责人（团组常务&兼职团干部）</div>
+                        <div class="campus-period">2020年9月 - 2024年7月</div>
+                    </div>
+                    <div class="campus-content">
+                        <div class="campus-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>团队建设与统筹</strong>：筹校团委组织部近400人的全部事务性工作和内部建设与部分南开大学团委日常建设统筹、公务出差事宜</span>
+                        </div>
+                        <div class="campus-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>团务培训&会议筹办</strong>：主讲公务礼仪等5门课程，10+场次，覆盖团员1000+人次；独立筹办40余场组织部大型对外会议、10余场校级公开考评会，大型会议覆盖近千人次。</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="campus-card">
+                    <div class="campus-header">
+                        <div class="campus-organization">天津市学联 & 马克思主义学院学生会</div>
+                        <div class="campus-role">天津市学联骨干 & 学生会主席</div>
+                        <div class="campus-period">2021年8月 - 2023年7月</div>
+                    </div>
+                    <div class="campus-content">
+                        <div class="campus-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>项目管理</strong>：跟进发布各高校“我为青年做实事”项目，建构特色栏目特辑，共产出17期推送</span>
+                        </div>
+                        <div class="campus-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>活动筹办</strong>：统筹学院2022级新生迎新活动，制作迎新系列推送5篇 ，独立承办5期“知信行”读书会、音诗会、学生代表大会共5场</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="campus-card">
+                    <div class="campus-header">
+                        <div class="campus-organization">甘肃省平凉市庄浪县韩店镇东门村</div>
+                        <div class="campus-role">驻村第一书记助理</div>
+                        <div class="campus-period">2023年7月 - 2023年8月</div>
+                    </div>
+                    <div class="campus-content">
+                        <div class="campus-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span>协助主播开播带货，参与电商后台产品策划，农产品分类营销活动，为电商中心营收负责</span>
+                        </div>
+                        <div class="campus-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span>和团队合作对接校园博主等KOL资源，策划系列视频进行账号冷启动，1月内农合助农账号涨粉3000+，首日直播营收额破1w</span>
+                        </div>
+                        <div class="campus-detail">
+                            <i class="fas fa-check-circle"></i>
+                            <span>协助驻村第一书记进行村务整理 ，改编东门村村歌《东门人的歌》和村风治理三字经，覆盖全村500余人</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 个人技能 -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">个人技能</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="skill-name">SQL</div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="skill-name">SPSS</div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="skill-name">PR</div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="skill-name">AI制图&剪辑</div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="skill-name">PS</div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <div class="skill-name">Excel高级函数</div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="skill-name">PowerPoint</div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <div class="skill-name">Word</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚/联系信息 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>联系信息</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> 15794440922</li>
+                        <li><i class="fas fa-envelope"></i> njumjc2002@163.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 江苏南京栖霞区</li>
+                        <li><i class="fas fa-user-check"></i> 中共党员</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>教育背景</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-university"></i> 南京大学（硕士）</li>
+                        <li><i class="fas fa-graduation-cap"></i> 思想政治教育（学术型硕士）</li>
+                        <li><i class="fas fa-university"></i> 南开大学（本科）</li>
+                        <li><i class="fas fa-book"></i> 思想政治教育 & 广播电视学双学位</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>实习经历</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-briefcase"></i> 小红书科技有限公司</li>
+                        <li><i class="fas fa-briefcase"></i> 腾讯科技（上海）有限公司</li>
+                        <li><i class="fas fa-briefcase"></i> 上海哔哩哔哩科技有限公司</li>
+                        <li><i class="fas fa-briefcase"></i> 北京字节跳动科技有限公司</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>关注我</h3>
+                    <p style="margin-bottom: 20px; color: rgba(255,255,255,0.8);">欢迎通过以下方式与我联系</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="mailto:njumjc2002@163.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 孟嘉琛. 个人主页. 保留所有权利.</p>
+                <p style="margin-top: 5px;">最后更新: 2026年1月</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    // 关闭移动端菜单
+                    navLinks.classList.remove('active');
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 滚动时改变导航栏样式
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.padding = '0';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '';
+                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.08)';
+            }
+        });
+        
+        // 动画效果
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // 观察所有教育卡片
+        document.querySelectorAll('.education-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.5s ease ${index * 0.2}s, transform 0.5s ease ${index * 0.2}s`;
+            observer.observe(card);
+        });
+        
+        // 观察所有时间线项目
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = `opacity 0.5s ease ${index * 0.2}s, transform 0.5s ease ${index * 0.2}s`;
+            observer.observe(item);
+        });
+        
+        // 观察所有实习卡片
+        document.querySelectorAll('.experience-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.5s ease ${index * 0.2}s, transform 0.5s ease ${index * 0.2}s`;
+            observer.observe(card);
+        });
+        
+        // 观察所有校园卡片
+        document.querySelectorAll('.campus-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.5s ease ${index * 0.2}s, transform 0.5s ease ${index * 0.2}s`;
+            observer.observe(card);
+        });
+        
+        // 观察所有技能项目
+        document.querySelectorAll('.skill-item').forEach((skill, index) => {
+            skill.style.opacity = '0';
+            skill.style.transform = 'translateY(20px)';
+            skill.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+            observer.observe(skill);
+        });
+        
+        // 页面加载后触发一次滚动事件以设置导航栏状态
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>
